@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #0d0d18;
+  color: #f0f0f8;
+  font-family: system-ui, Tahoma, 'Segoe UI', sans-serif;
+}
+
+.game-shell {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.75rem 1.5rem;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(80, 60, 180, 0.15) 0%, transparent 55%),
+    #0d0d18;
+}
+
+.game-header {
+  display: flex;
+  width: min(100%, 420px);
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.game-kicker {
+  margin: 0;
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #8888aa;
+}
+
+.game-title {
+  margin: 0.15rem 0 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.game-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.8rem;
+  color: #b0b0cc;
+}
+
+.game-stats strong {
+  color: #fff;
+}
+
+.game-btn {
+  padding: 0.35rem 0.75rem;
+  border: 1px solid #505070;
+  border-radius: 4px;
+  background: #252540;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.game-btn:active {
+  background: #353560;
+}
+
+.game-banner {
+  width: min(100%, 420px);
+  margin: 0 0 0.5rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.game-banner-win {
+  background: #2e7d32;
+}
+
+.game-banner-over {
+  background: #c62828;
+}
+
+.game-hint {
+  width: min(100%, 420px);
+  margin: 0 0 0.75rem;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: #707090;
+  text-align: center;
+}
+
+.game-board-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.block-burst-grid {
+  display: grid;
+  gap: 2px;
+  width: min(92vw, 360px);
+  aspect-ratio: 12 / 20;
+  background: #080810;
+  padding: 4px;
+  border: 2px solid #303050;
+  border-radius: 6px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.block-burst-cell {
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 2px;
+  padding: 0;
+  transition: transform 0.08s ease, filter 0.08s ease;
+}
+
+.block-burst-cell.bb-empty {
+  background: transparent;
+  border-color: transparent;
+  cursor: default;
+}
+
+.block-burst-cell.bb-red {
+  background: linear-gradient(145deg, #ff6659, #c62828);
+}
+
+.block-burst-cell.bb-green {
+  background: linear-gradient(145deg, #66bb6a, #2e7d32);
+}
+
+.block-burst-cell.bb-blue {
+  background: linear-gradient(145deg, #42a5f5, #1565c0);
+}
+
+.block-burst-cell.bb-yellow {
+  background: linear-gradient(145deg, #fff176, #f9a825);
+}
+
+.block-burst-cell.bb-valid {
+  cursor: pointer;
+}
+
+.block-burst-cell.bb-valid:hover,
+.block-burst-cell.bb-hover {
+  filter: brightness(1.2);
+  transform: scale(0.92);
+  z-index: 1;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.45);
+}
+
+.block-burst-cell.bb-invalid {
+  cursor: not-allowed;
+  opacity: 0.88;
+}
+
+.game-footer {
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  color: #606080;
+}
+
+.game-footer a {
+  color: #a0a0cc;
+  text-decoration: none;
+}
+
+.game-footer a:hover {
+  color: #fff;
+}

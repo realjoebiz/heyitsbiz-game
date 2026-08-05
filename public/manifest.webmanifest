@@ -1,0 +1,9 @@
+{
+  "name": "Color Blocks",
+  "short_name": "Color Blocks",
+  "description": "Match and clear coloured blocks on a 12×20 grid.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0d18",
+  "theme_color": "#0d0d18"
+}
