@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from 'next';
-import { ColorBlocksGame } from '@/components/ColorBlocksGame';
+import { GameHub } from '@/components/GameHub';
 
 export const metadata: Metadata = {
-  title: 'Color Blocks — game.heyitsbiz.com',
-  description: 'Clear the 12×20 grid by matching adjacent coloured blocks.',
+  title: 'Games — game.heyitsbiz.com',
+  description: 'Pick a game. Color Blocks, Decoy, and more.',
   manifest: '/manifest.webmanifest',
 };
 
@@ -14,6 +14,6 @@ export const viewport: Viewport = {
   themeColor: '#0d0d18',
 };
 
-export default function GamePage() {
-  return <ColorBlocksGame />;
+export default function HubPage() {
+  return <GameHub />;
 }

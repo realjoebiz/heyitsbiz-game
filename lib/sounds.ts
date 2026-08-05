@@ -38,3 +38,9 @@ export function playSound(kind: 'click' | 'error' | 'win') {
     setTimeout(() => blip(784, 0.14), 190);
   }
 }
+
+/** Annoying countdown tick for Decoy. */
+export function playTick() {
+  blip(960, 0.045, 'square', 0.055);
+  setTimeout(() => blip(720, 0.04, 'triangle', 0.04), 40);
+}

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useCallback, useMemo, useState } from 'react';
 import {
   COLS,
@@ -57,6 +58,9 @@ export function ColorBlocksGame() {
     <div className="game-shell">
       <header className="game-header">
         <div>
+          <Link href="/" className="decoy-back" onClick={() => playSound('click')}>
+            ← Games
+          </Link>
           <p className="game-kicker">heyitsbiz</p>
           <h1 className="game-title">Color Blocks</h1>
         </div>

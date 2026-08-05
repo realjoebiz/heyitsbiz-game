@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Color Blocks — game.heyitsbiz.com',
-  description: 'Clear the 12×20 grid by matching adjacent coloured blocks.',
+  title: 'Games — game.heyitsbiz.com',
+  description: 'Pick a game on game.heyitsbiz.com.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
