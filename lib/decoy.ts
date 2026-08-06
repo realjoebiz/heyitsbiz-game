@@ -21,8 +21,10 @@ export type DecoySquare = {
   large_shape_colour: Colour;
   text_shape: Shape;
   text_shape_colour: Colour;
+  /** Written colour word (e.g. GREEN). */
   text_colour: Colour;
-  text_colour_background_colour: Colour;
+  /** Font colour for that word — random, not necessarily matching the word. */
+  text_colour_font_colour: Colour;
   inner_shape: Shape;
   inner_shape_colour: Colour;
   decoy_number: number;
@@ -35,7 +37,7 @@ export type AskField =
   | 'text_shape'
   | 'text_shape_colour'
   | 'text_colour'
-  | 'text_colour_background_colour'
+  | 'text_colour_font_colour'
   | 'large_shape'
   | 'large_shape_colour'
   | 'background_colour'
@@ -59,7 +61,7 @@ const FIELD_LABEL: Record<AskField, string> = {
   text_shape: 'TEXT SHAPE',
   text_shape_colour: 'TEXT SHAPE COLOUR',
   text_colour: 'TEXT COLOUR',
-  text_colour_background_colour: 'TEXT COLOUR BACKGROUND',
+  text_colour_font_colour: 'TEXT COLOUR FONT',
   large_shape: 'LARGE SHAPE',
   large_shape_colour: 'LARGE SHAPE COLOUR',
   background_colour: 'BACKGROUND COLOUR',
@@ -72,7 +74,7 @@ const ASK_FIELDS: AskField[] = [
   'text_shape',
   'text_shape_colour',
   'text_colour',
-  'text_colour_background_colour',
+  'text_colour_font_colour',
   'large_shape',
   'large_shape_colour',
   'background_colour',
@@ -89,6 +91,11 @@ export const COLOUR_HEX: Record<Colour, string> = {
   red: '#c62828',
   purple: '#6a1b9a',
 };
+
+/** Outline that stays readable on a matching fill/background. */
+export function contrastOutline(colour: Colour): string {
+  return colour === 'white' || colour === 'yellow' ? '#111111' : '#ffffff';
+}
 
 function pick<T>(arr: readonly T[]): T {
   return arr[Math.floor(Math.random() * arr.length)]!;
@@ -120,7 +127,7 @@ export function newDecoyRound(): { squares: DecoySquare[]; question: DecoyQuesti
     text_shape: pick(SHAPES),
     text_shape_colour: pick(COLOURS),
     text_colour: pick(COLOURS),
-    text_colour_background_colour: pick(COLOURS),
+    text_colour_font_colour: pick(COLOURS),
     inner_shape: pick(SHAPES),
     inner_shape_colour: pick(COLOURS),
     decoy_number: decoyNums[i]!,

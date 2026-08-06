@@ -421,8 +421,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.95;
   z-index: 1;
+}
+
+.decoy-large-shape {
+  width: 75%;
+  height: 75%;
+  max-width: 75%;
+  max-height: 75%;
 }
 
 .decoy-stack {
@@ -431,24 +437,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.35rem;
 }
 
-.decoy-text-colour {
-  font-size: clamp(0.55rem, 1.4vw, 0.75rem);
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  padding: 0.12rem 0.35rem;
-  border-radius: 2px;
+.decoy-text {
+  font-size: clamp(0.7rem, 1.8vw, 0.95rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
   line-height: 1.1;
-}
-
-.decoy-text-shape {
-  font-size: clamp(0.55rem, 1.4vw, 0.75rem);
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  line-height: 1.1;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.55);
+  background: none;
+  padding: 0;
 }
 
 .decoy-decoy-num {
@@ -458,13 +456,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(2.2rem, 7vw, 3.4rem);
+  font-size: clamp(1.35rem, 4.2vw, 2.1rem);
   font-weight: 900;
   line-height: 1;
   pointer-events: none;
-  text-shadow:
-    0 0 4px rgba(0, 0, 0, 0.65),
-    0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .decoy-form {

@@ -6,6 +6,7 @@ import { DecoyShape } from '@/components/DecoyShape';
 import {
   COLOUR_HEX,
   checkAnswer,
+  contrastOutline,
   newDecoyRound,
   type DecoyQuestion,
   type DecoySquare,
@@ -34,28 +35,47 @@ function SquareCard({
 
       <div className={`decoy-layer decoy-reveal ${showMemorize ? 'is-gone' : 'is-visible'}`}>
         <div className="decoy-large">
-          <DecoyShape shape={square.large_shape} colour={square.large_shape_colour} size={96} />
+          <DecoyShape
+            shape={square.large_shape}
+            colour={square.large_shape_colour}
+            className="decoy-large-shape"
+          />
         </div>
 
         <div className="decoy-stack">
           <span
-            className="decoy-text-colour"
+            className="decoy-text decoy-text-colour"
             style={{
-              color: COLOUR_HEX[square.text_colour],
-              background: COLOUR_HEX[square.text_colour_background_colour],
+              color: COLOUR_HEX[square.text_colour_font_colour],
+              WebkitTextStroke: `1.5px ${contrastOutline(square.text_colour_font_colour)}`,
+              paintOrder: 'stroke fill',
             }}
           >
             {square.text_colour.toUpperCase()}
           </span>
 
-          <DecoyShape shape={square.inner_shape} colour={square.inner_shape_colour} size={42} />
+          <DecoyShape shape={square.inner_shape} colour={square.inner_shape_colour} size={48} />
 
-          <span className="decoy-text-shape" style={{ color: COLOUR_HEX[square.text_shape_colour] }}>
+          <span
+            className="decoy-text decoy-text-shape"
+            style={{
+              color: COLOUR_HEX[square.text_shape_colour],
+              WebkitTextStroke: `1.5px ${contrastOutline(square.text_shape_colour)}`,
+              paintOrder: 'stroke fill',
+            }}
+          >
             {square.text_shape.toUpperCase()}
           </span>
         </div>
 
-        <span className="decoy-decoy-num" style={{ color: COLOUR_HEX[square.decoy_number_colour] }}>
+        <span
+          className="decoy-decoy-num"
+          style={{
+            color: COLOUR_HEX[square.decoy_number_colour],
+            WebkitTextStroke: `2px ${contrastOutline(square.decoy_number_colour)}`,
+            paintOrder: 'stroke fill',
+          }}
+        >
           {square.decoy_number}
         </span>
       </div>
