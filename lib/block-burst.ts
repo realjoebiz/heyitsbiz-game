@@ -1,7 +1,7 @@
 export const COLS = 12;
 export const ROWS = 20;
 
-export const COLORS = ['red', 'green', 'blue', 'yellow'] as const;
+export const COLORS = ['red', 'green', 'blue'] as const;
 export type BlockColor = (typeof COLORS)[number];
 export type Cell = BlockColor | null;
 export type Grid = Cell[][];

@@ -148,10 +148,6 @@ body {
   background: linear-gradient(145deg, #42a5f5, #1565c0);
 }
 
-.block-burst-cell.bb-yellow {
-  background: linear-gradient(145deg, #fff176, #f9a825);
-}
-
 .block-burst-cell.bb-valid {
   cursor: pointer;
 }

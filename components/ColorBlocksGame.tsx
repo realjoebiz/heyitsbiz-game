@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   COLS,
   ROWS,
@@ -18,12 +18,22 @@ const COLOR_CLASS: Record<BlockColor, string> = {
   red: 'bb-red',
   green: 'bb-green',
   blue: 'bb-blue',
-  yellow: 'bb-yellow',
 };
 
 export function ColorBlocksGame() {
   const [game, setGame] = useState<GameState>(() => newGame());
   const [hover, setHover] = useState<{ row: number; col: number } | null>(null);
+  const gameRef = useRef(game);
+  const lastSoundMove = useRef(0);
+  gameRef.current = game;
+
+  useEffect(() => {
+    if (game.moves > lastSoundMove.current) {
+      playSound('click');
+      if (game.status === 'won') playSound('win');
+      lastSoundMove.current = game.moves;
+    }
+  }, [game.moves, game.status]);
 
   const hoverKeys = useMemo(() => {
     if (!hover || game.status !== 'playing' || !isValidClick(game.grid, hover.row, hover.col)) {
@@ -32,25 +42,24 @@ export function ColorBlocksGame() {
     return new Set(getGroup(game.grid, hover.row, hover.col).map(({ row, col }) => `${row},${col}`));
   }, [hover, game]);
 
-  const onCellClick = useCallback(
-    (row: number, col: number) => {
-      if (!isValidClick(game.grid, row, col)) {
-        playSound('error');
-        return;
-      }
-      playSound('click');
-      setGame((g) => {
-        const next = clickCell(g, row, col);
-        if (next.status === 'won') playSound('win');
-        return next;
-      });
-    },
-    [game.grid]
-  );
+  const onCellClick = useCallback((row: number, col: number) => {
+    const current = gameRef.current;
+    if (current.status !== 'playing' || !isValidClick(current.grid, row, col)) {
+      playSound('error');
+      return;
+    }
+    const next = clickCell(current, row, col);
+    gameRef.current = next;
+    setGame(next);
+    setHover(null);
+  }, []);
 
   const restart = () => {
     playSound('click');
-    setGame(newGame());
+    lastSoundMove.current = 0;
+    const next = newGame();
+    gameRef.current = next;
+    setGame(next);
     setHover(null);
   };
 
@@ -85,7 +94,7 @@ export function ColorBlocksGame() {
       ) : null}
 
       <p className="game-hint">
-        {COLS}×{ROWS} grid · click groups of 2+ matching colours · blocks fall down then left
+        {COLS}×{ROWS} · three colours · click groups of 2+ · blocks fall down, then left
       </p>
 
       <div className="game-board-wrap">
@@ -101,7 +110,7 @@ export function ColorBlocksGame() {
           {game.grid.map((row, r) =>
             row.map((cell, c) => {
               const key = `${r},${c}`;
-              const valid = cell !== null && isValidClick(game.grid, r, c);
+              const valid = cell !== null && game.status === 'playing' && isValidClick(game.grid, r, c);
               const inHover = hoverKeys.has(key);
               return (
                 <button

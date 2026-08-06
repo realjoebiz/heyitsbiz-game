@@ -11,7 +11,7 @@ export const GAMES: GameMeta[] = [
   {
     slug: 'color-blocks',
     title: 'Color Blocks',
-    blurb: 'Clear matching groups on a 12×20 grid.',
+    blurb: 'Clear matching groups — three colours, 12×20 grid.',
     accent: '#42a5f5',
     available: true,
   },
