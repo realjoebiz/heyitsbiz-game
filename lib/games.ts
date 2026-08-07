@@ -23,11 +23,11 @@ export const GAMES: GameMeta[] = [
     available: true,
   },
   {
-    slug: 'pulse',
-    title: 'Pulse',
-    blurb: 'Coming soon.',
+    slug: 'realmino',
+    title: 'Realmino',
+    blurb: 'Online rooms — draft tiles, build kingdoms.',
     accent: '#66bb6a',
-    available: false,
+    available: true,
   },
   {
     slug: 'mirror',
