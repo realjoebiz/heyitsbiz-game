@@ -30,11 +30,11 @@ export const GAMES: GameMeta[] = [
     available: true,
   },
   {
-    slug: 'mirror',
-    title: 'Mirror',
-    blurb: 'Coming soon.',
+    slug: 'fragpit',
+    title: 'Fragpit',
+    blurb: 'Arena FPS — rooms, bots, rail & rockets.',
     accent: '#ab47bc',
-    available: false,
+    available: true,
   },
   {
     slug: 'drift',

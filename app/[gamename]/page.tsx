@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ColorBlocksGame } from '@/components/ColorBlocksGame';
 import { DecoyGame } from '@/components/DecoyGame';
+import { FragpitGame } from '@/components/FragpitGame';
 import { RealminoGame } from '@/components/RealminoGame';
 import { GAMES, getGame } from '@/lib/games';
 
@@ -29,6 +30,7 @@ export default function GameRoutePage({ params }: Props) {
   if (params.gamename === 'color-blocks') return <ColorBlocksGame />;
   if (params.gamename === 'decoy') return <DecoyGame />;
   if (params.gamename === 'realmino') return <RealminoGame />;
+  if (params.gamename === 'fragpit') return <FragpitGame />;
 
   notFound();
 }
