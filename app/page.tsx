@@ -3,7 +3,7 @@ import { GameHub } from '@/components/GameHub';
 
 export const metadata: Metadata = {
   title: 'Games — game.heyitsbiz.com',
-  description: 'Pick a game. Color Blocks, Decoy, Realmino, Fragpit, and more.',
+  description: 'Pick a game. Color Blocks, Decoy, Realmino, and more.',
   manifest: '/manifest.webmanifest',
 };
 
